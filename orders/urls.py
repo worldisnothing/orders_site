@@ -7,4 +7,5 @@ urlpatterns = [
     path('orders/<int:pk>/', views.OrderDetailView.as_view(), name='order_detail'),
     path('api/orders/', views.api_order_list, name='api_order_list'),
     path('register/', views.RegisterView.as_view(), name='register'),
+    path('download/<int:order_number>/', views.download_document, name='download_document'),
 ]

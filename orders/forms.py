@@ -45,11 +45,16 @@ class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['volume_type'].widget.attrs['onchange'] = 'toggleFields(this)'
-        # Изначально скрыть поля для множественного
+
+        # Изначально скрыть все поля и лейблы
         self.fields['document'].widget.attrs['style'] = 'display: none;'
-        self.fields['document'].widget.attrs['disabled'] = True
+        self.fields['document'].label = ''
+
         self.fields['quantity'].widget.attrs['style'] = 'display: none;'
-        self.fields['description'].widget.attrs['style'] = 'display: block;'
+        self.fields['quantity'].label = ''
+
+        self.fields['description'].widget.attrs['style'] = 'display: none;'
+        self.fields['description'].label = ''
 
     def clean(self):
         cleaned_data = super().clean()
